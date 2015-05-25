@@ -9,6 +9,8 @@ Requirements
 HOWTO run:
 #command:    python LevelEditorStart.py
 #args:       TT DD BR DG DL MM CC CL CM CS GS GZ OZ PA
+
+# Use this command for now as I have all the style files in place for TTC
 #Put args after command ex: python LevelEditorStart.py TT
 
 

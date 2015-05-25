@@ -35,7 +35,7 @@ from direct.interval.LerpInterval import LerpFunctionInterval
 
 from otp.avatar import LocalAvatar
 
-from toontown.toon import RobotToon
+#from toontown.toon import RobotToon
 from otp.otpbase import OTPGlobals
 
 from LevelStyleManager import *
@@ -232,6 +232,29 @@ for hoodId in hoods:
     else:
         print 'Error: no hood defined for: ', hoodId
 
+# Load the dna storage!!!
+class loadDNAStore():
+
+    def __init__(self):
+
+        #from DNAStorage import DNAStorage
+        #global DNASTORE
+        #DNASTORE = DNAStorage()
+        
+        import ToontownLoader
+        global loader
+
+        loader = ToontownLoader.ToontownLoader(self)
+        __builtins__['loader'] = loader
+
+        from DNASuitPoint import DNASuitPoint
+        global DNASuitPoint
+        DNASuitPoint = DNASuitPoint(self, 1 ,1)
+
+
+loadDNAStore()
+
+
 # Load DNA
 try:
     if dnaLoaded:
@@ -243,54 +266,61 @@ except NameError:
     # We need to use the __builtin__.foo syntax, not the
     # __builtins__["foo"] syntax, since this file runs at the top
     # level.
-    __builtin__.DNASTORE = DNASTORE = DNAStorage()
+    #__builtin__.DNASTORE = DNASTORE = DNAStorage()
+
 
     # Load the generic storage files
-    loadDNAFile(DNASTORE, 'dna/storage.dna', CSDefault, 1)
-    loadDNAFile(DNASTORE, 'phase_4/dna/storage.dna', CSDefault, 1)
-    loadDNAFile(DNASTORE, 'phase_5/dna/storage_town.dna', CSDefault, 1)
-    # loadDNAFile(DNASTORE, 'phase_5.5/dna/storage_estate.dna', CSDefault, 1)
-    # loadDNAFile(DNASTORE, 'phase_5.5/dna/storage_house_interior.dna', CSDefault, 1)
+    loader.loadDNAFile(DNASTORE, 'phase_4/dna/storage.pdna')
+    loader.loadDNAFile(DNASTORE, 'phase_4/dna/storage.pdna')
+    loader.loadDNAFile(DNASTORE, 'phase_5/dna/storage_town.pdna')
+    # loadDNAFile(DNASTORE, 'phase_5.5/dna/storage_estate.pdna')
+    # loadDNAFile(DNASTORE, 'phase_5.5/dna/storage_house_interior.pdna')
     # Load all the neighborhood specific storage files
     if 'TT' in hoods:
-        loadDNAFile(DNASTORE, 'phase_4/dna/storage_TT.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_4/dna/storage_TT_sz.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_5/dna/storage_TT_town.dna', CSDefault, 1)
+        loader.loadDNAFile(DNASTORE, 'phase_4/dna/storage_TT.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_4/dna/storage_TT_sz.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_5/dna/storage_TT_town.pdna')
     if 'DD' in hoods:
-        loadDNAFile(DNASTORE, 'phase_6/dna/storage_DD.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_6/dna/storage_DD_sz.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_6/dna/storage_DD_town.dna', CSDefault, 1)
+        loader.loadDNAFile(DNASTORE, 'phase_6/dna/storage_DD.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_6/dna/storage_DD_sz.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_6/dna/storage_DD_town.pdna')
     if 'MM' in hoods:
-        loadDNAFile(DNASTORE, 'phase_6/dna/storage_MM.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_6/dna/storage_MM_sz.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_6/dna/storage_MM_town.dna', CSDefault, 1)
+        loader.loadDNAFile(DNASTORE, 'phase_6/dna/storage_MM.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_6/dna/storage_MM_sz.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_6/dna/storage_MM_town.pdna')
     if 'BR' in hoods:
-        loadDNAFile(DNASTORE, 'phase_8/dna/storage_BR.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_8/dna/storage_BR_sz.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_8/dna/storage_BR_town.dna', CSDefault, 1)
+        loader.loadDNAFile(DNASTORE, 'phase_8/dna/storage_BR.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_8/dna/storage_BR_sz.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_8/dna/storage_BR_town.pdna')
     if 'DG' in hoods:
-        loadDNAFile(DNASTORE, 'phase_8/dna/storage_DG.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_8/dna/storage_DG_sz.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_8/dna/storage_DG_town.dna', CSDefault, 1)
+        loader.loadDNAFile(DNASTORE, 'phase_8/dna/storage_DG.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_8/dna/storage_DG_sz.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_8/dna/storage_DG_town.pdna')
     if 'DL' in hoods:
-        loadDNAFile(DNASTORE, 'phase_8/dna/storage_DL.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_8/dna/storage_DL_sz.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_8/dna/storage_DL_town.dna', CSDefault, 1)
-    if 'CS' in hoods:
-        loadDNAFile(DNASTORE, 'phase_9/dna/storage_CS.dna', CSDefault, 1)
+        loader.loadDNAFile(DNASTORE, 'phase_8/dna/storage_DL.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_8/dna/storage_DL_sz.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_8/dna/storage_DL_town.pdna')
+        
+    # Broken
+    #if 'CS' in hoods:
+        #loader.loadDNAFile(DNASTORE, 'phase_9/dna/storage_CS.pdna')
+        
     if 'GS' in hoods:
-        loadDNAFile(DNASTORE, 'phase_4/dna/storage_GS.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_4/dna/storage_GS_sz.dna', CSDefault, 1)
+        loader.loadDNAFile(DNASTORE, 'phase_6/dna/storage_GS.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_6/dna/storage_GS_sz.pdna')
     if 'OZ' in hoods:
-        loadDNAFile(DNASTORE, 'phase_6/dna/storage_OZ.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_6/dna/storage_OZ_sz.dna', CSDefault, 1)
+        loader.loadDNAFile(DNASTORE, 'phase_6/dna/storage_OZ.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_6/dna/storage_OZ_sz.pdna')
     if 'GZ' in hoods:
-        loadDNAFile(DNASTORE, 'phase_6/dna/storage_GZ.dna', CSDefault, 1)
-        loadDNAFile(DNASTORE, 'phase_6/dna/storage_GZ_sz.dna', CSDefault, 1)
+        loader.loadDNAFile(DNASTORE, 'phase_6/dna/storage_GZ.pdna')
+        loader.loadDNAFile(DNASTORE, 'phase_6/dna/storage_GZ_sz.pdna')
+        
+        
+    # Also broken
     if 'CC' in hoods:
-        loadDNAFile(DNASTORE, 'phase_12/dna/storage_CC_sz.dna', CSDefault, 1)        
-    if 'PA' in hoods:
-        loadDNAFile(DNASTORE, 'phase_13/dna/storage_party_sz.dna', CSDefault, 1)
+        loader.loadDNAFile(DNASTORE, 'phase_12/dna/storage_CC_sz.pdna')        
+    #if 'PA' in hoods:
+        #loader.loadDNAFile(DNASTORE, 'phase_13/dna/storage_party_sz.pdna')
     __builtin__.dnaLoaded = 1
 
 
@@ -313,9 +343,11 @@ class LevelEditor(NodePath, DirectObject):
     # selectedDNARoot: DNA Node of currently selected object
     # selectedNPRoot: Corresponding Node Path
     # DNATarget: Subcomponent being modified by Pie Menu
+
     def __init__(self, hoods = hoods):
         # Make the level editor a node path so that you can show/hide
         # The level editor separately from loading/saving the top level node
+
         # Initialize superclass
         NodePath.__init__(self)
         # Become the new node path
@@ -577,12 +609,14 @@ class LevelEditor(NodePath, DirectObject):
         DNASTORE.resetSuitPoints()
         DNASTORE.resetBattleCells()
 
-        # Create fresh DNA DATA
-        self.DNAData = DNAData('level_data')
+        # NEEDS FIXED
+        # Create fresh DNA DATA        
+        #self.DNAData = DNAData('level_data')
 
         # Create new toplevel node path and DNA
-        if fCreateToplevel:
-            self.createToplevel(DNANode('level'))
+        # NEEDS FIXED
+        #if fCreateToplevel:
+            #self.createToplevel(DNANode('level'))
 
         # Initialize variables
         # Reset grid
@@ -621,7 +655,8 @@ class LevelEditor(NodePath, DirectObject):
     def deleteToplevel(self):
         # Destory old toplevel node path and DNA
         # First the toplevel DNA
-        self.DNAData.remove(self.DNAToplevel)
+        # NEEDS FIXED
+        #self.DNAData.remove(self.DNAToplevel)
         # Then the toplevel Node Path
         self.NPToplevel.removeNode()
 
@@ -629,7 +664,8 @@ class LevelEditor(NodePath, DirectObject):
         # When you create a new level, data is added to this node
         # When you load a DNA file, you replace this node with the new data
         self.DNAToplevel = dnaNode
-        self.DNAData.add(self.DNAToplevel)
+        # NEEDS FIXED
+        #self.DNAData.add(self.DNAToplevel)
         if nodePath:
             # Node path given, use it
             self.NPToplevel = nodePath
@@ -1242,7 +1278,7 @@ class LevelEditor(NodePath, DirectObject):
                         self.updatePose(dnaNode, nodePath)
         elif newParent:
             # See if this node path is a suit edge
-            suitEdge, oldVisGroup = self.np2EdgeDict.get(nodePath.id(), (None, None))
+            suitEdge, oldVisGroup = self.np2EdgeDict.get(nodePath.get_key(), (None, None))
             # And see if the new parent is a vis group
             newVisGroupNP, newVisGroupDNA = self.findParentVisGroup(newParent)
             if suitEdge and DNAClassEqual(newVisGroupDNA, DNA_VIS_GROUP):
@@ -1252,7 +1288,7 @@ class LevelEditor(NodePath, DirectObject):
                 suitEdge.setZoneId(newVisGroupDNA.getName())
                 newVisGroupDNA.addSuitEdge(suitEdge)
                 # Update np2EdgeDict to reflect changes
-                self.np2EdgeDict[nodePath.id()] = [suitEdge, newVisGroupDNA]
+                self.np2EdgeDict[nodePath.get_key()] = [suitEdge, newVisGroupDNA]
 
     def setActiveParent(self, nodePath = None):
         """ Set NPParent and DNAParent to node path and its DNA """
@@ -2749,7 +2785,8 @@ class LevelEditor(NodePath, DirectObject):
         print 'Saving DNA to: ', filename
         binaryFilename = Filename(filename)
         binaryFilename.setBinary()
-        self.DNAData.writeDna(binaryFilename, Notify.out(), DNASTORE)
+        # NEEDS FIXED
+        #self.DNAData.writeDna(binaryFilename, Notify.out(), DNASTORE)
 
     def saveColor(self):
         self.appendColorToColorPaletteFile(self.panel.colorEntry.get())
@@ -3059,7 +3096,7 @@ class LevelEditor(NodePath, DirectObject):
                 edgeLine = self.drawSuitEdge(suitEdge, self.NPParent)
                 # Store the line in a dict so we can hide/show them
                 self.edgeDict[suitEdge] = edgeLine
-                self.np2EdgeDict[edgeLine.id()] = [suitEdge, self.DNAParent]
+                self.np2EdgeDict[edgeLine.get_key()] = [suitEdge, self.DNAParent]
                 # Store the edge on each point in case we move the point
                 # we can update the edge
                 for point in [self.startSuitPoint, self.endSuitPoint]:
@@ -3082,7 +3119,7 @@ class LevelEditor(NodePath, DirectObject):
                     edgeLine = self.drawSuitEdge(suitEdge, self.NPParent)
                     # Store the line in a dict so we can hide/show them
                     self.edgeDict[suitEdge] = edgeLine
-                    self.np2EdgeDict[edgeLine.id()] = [suitEdge, self.DNAParent]
+                    self.np2EdgeDict[edgeLine.get_key()] = [suitEdge, self.DNAParent]
                     for point in [self.startSuitPoint, self.endSuitPoint]:
                         if self.point2edgeDict.has_key(point):
                             self.point2edgeDict[point].append(suitEdge)
@@ -3211,7 +3248,7 @@ class LevelEditor(NodePath, DirectObject):
                 edge = dnaVisGroup.getSuitEdge(i)
                 edgeLine = self.drawSuitEdge(edge, np)
                 self.edgeDict[edge] = edgeLine
-                self.np2EdgeDict[edgeLine.id()] = [edge, dnaVisGroup]
+                self.np2EdgeDict[edgeLine.get_key()] = [edge, dnaVisGroup]
                 # Store the edge on each point in case we move the point
                 # we can update the edge
                 for point in [edge.getStartPoint(), edge.getEndPoint()]:
@@ -4783,13 +4820,13 @@ class LevelEditorPanel(Pmw.MegaToplevel):
             variable = self.driveMode,
             command = self.levelEditor.useDirectFly)
         self.directModeButton.pack(side = LEFT, fill = X, expand = 1)
-        self.driveModeButton = Radiobutton(
-            buttonFrame4,
-            text = 'Drive',
-            value = 0,
-            variable = self.driveMode,
-            command = self.levelEditor.useDriveMode)
-        self.driveModeButton.pack(side = LEFT, fill = X, expand = 1)
+        #self.driveModeButton = Radiobutton(
+        #    buttonFrame4,
+        #    text = 'Drive',
+        #    value = 0,
+        #    variable = self.driveMode,
+        #    command = self.levelEditor.useDriveMode)
+        #self.driveModeButton.pack(side = LEFT, fill = X, expand = 1)
 
         self.fColl = IntVar()
         self.fColl.set(1)

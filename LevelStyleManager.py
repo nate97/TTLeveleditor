@@ -6,6 +6,98 @@ from direct.gui.DirectGui import *
 from PieMenu import *
 from ScrollMenu import *
 
+# hacky fixes
+import os
+
+# This is not the right way todo this
+class dnaPieces():
+
+    def __init__(self):
+        
+        #import DNAUtil
+        #import DNAError
+        #import DNAAnimBuilding
+        #import DNAAnimProp
+            
+        from DNACornice import DNACornice
+        from DNADoor import DNADoor
+        from DNAFlatBuilding import DNAFlatBuilding
+        from DNAFlatDoor import DNAFlatDoor
+        from DNAGroup import DNAGroup
+        from DNAInteractiveProp import DNAInteractiveProp
+        from DNALandmarkBuilding import DNALandmarkBuilding
+        from DNANode import DNANode
+        from DNAProp import DNAProp
+        from DNASign import DNASign
+        from DNASignBaseline import DNASignBaseline
+        from DNASignGraphic import DNASignGraphic
+        from DNASignText import DNASignText
+        from DNAStreet import DNAStreet
+        from DNAVisGroup import DNAVisGroup
+        from DNAWall import DNAWall
+        from DNAWindows import DNAWindows
+        from DNAStorage import DNAStorage
+        
+        
+        global DNASTORE
+        DNASTORE = DNAStorage()
+
+        # Define dna variables
+        global DNACornice
+        DNACornice = DNACornice(self)
+        
+        global DNADoor
+        DNADoor = DNADoor(self)
+        
+        global DNAFlatBuilding
+        DNAFlatBuilding = DNAFlatBuilding(self)
+        
+        global DNAFlatDoor
+        DNAFlatDoor = DNAFlatDoor(self)
+        
+        global DNAGroup
+        DNAGroup = DNAGroup(self)
+        
+        global DNAInteractiveProp
+        DNAInteractiveProp = DNAInteractiveProp(self)
+        
+        global DNALandmarkBuilding
+        DNALandmarkBuilding = DNALandmarkBuilding(self)
+        
+        global DNANode
+        DNANode = DNANode(self)
+        
+        global DNAProp
+        DNAProp = DNAProp(self)
+        
+        global DNASign
+        DNASign = DNASign()
+        
+        global DNASignBaseline
+        DNASignBaseline = DNASignBaseline()
+        
+        global DNASignGraphic
+        DNASignGraphic = DNASignGraphic(self)
+        
+        global DNASignText
+        DNASignText = DNASignText()
+        
+        global DNAStreet
+        DNAStreet = DNAStreet(self)
+        
+        global DNAVisGroup
+        DNAVisGroup = DNAVisGroup(self)
+        
+        global DNAWall
+        DNAWall = DNAWall(self)
+        
+        global DNAWindows
+        DNAWindows = DNAWindows(self)
+
+# Load class
+dnaPieces()
+
+
 dnaDirectory = Filename.expandFrom(base.config.GetString("dna-directory", "$TTMODELS/src/dna"))
 
 
@@ -413,7 +505,10 @@ class LevelStyleManager:
         numItems = len(dictionary)
         newStyleMenu = hidden.attachNewNode(neighborhood + '_style_menu')
         radius = 0.7
-        angle = deg2Rad(360.0/numItems)
+        if numItems == 0:
+            angle = 1
+        else:
+            angle = deg2Rad(360.0/numItems)
         keys = dictionary.keys()
         keys.sort()
         styles = map(lambda x, d = dictionary: d[x], keys)
@@ -536,7 +631,10 @@ class LevelStyleManager:
         numItems = len(dictionary)
         newStyleMenu = hidden.attachNewNode(neighborhood + '_style_menu')
         radius = 0.7
-        angle = deg2Rad(360.0/numItems)
+        if numItems == 0:
+            angle = 1
+        else:
+            angle = deg2Rad(360.0/numItems)
         keys = dictionary.keys()
         keys.sort()
         styles = map(lambda x, d = dictionary: d[x], keys)
@@ -738,7 +836,10 @@ class LevelStyleManager:
         numItems = len(dictionary)
         newStyleMenu = hidden.attachNewNode(neighborhood + '_style_menu')
         radius = 0.7
-        angle = deg2Rad(360.0/numItems)
+        if numItems == 0:
+            angle = 1
+        else:
+            angle = deg2Rad(360.0/numItems)
         keys = dictionary.keys()
         keys.sort()
         styles = map(lambda x, d = dictionary: d[x], keys)
@@ -1164,8 +1265,13 @@ class LevelStyleManager:
         fname = Filename(dnaDirectory.getFullpath() +
                          '/stylefiles/' + filename)
 
+
+        # EHHH HACKY BUT IT WORKS FOR NOW ON LINUX HOPEFULLY ON WINDOWS IT DOSENT CRASH AND BURN
+        cwdPath = os.getcwd()
+        fname = cwdPath + str(fname)
+        
         # We use binary mode to avoid Windows' end-of-line convention
-        f = open(fname.toOsSpecific(), 'rb')
+        f = open(fname, 'rb')
         rawData = f.readlines()
         f.close()
         styleData = []
