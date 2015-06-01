@@ -237,7 +237,7 @@ class loadDNAStore():
 
     def __init__(self):
 
-        #from DNAStorage import DNAStorage
+        #from dna.DNAStorage import DNAStorage
         #global DNASTORE
         #DNASTORE = DNAStorage()
         
@@ -247,7 +247,7 @@ class loadDNAStore():
         loader = ToontownLoader.ToontownLoader(self)
         __builtins__['loader'] = loader
 
-        from DNASuitPoint import DNASuitPoint
+        from dna.DNASuitPoint import DNASuitPoint
         global DNASuitPoint
         DNASuitPoint = DNASuitPoint(self, 1 ,1)
 
@@ -271,7 +271,7 @@ except NameError:
 
     # Load the generic storage files
     loader.loadDNAFile(DNASTORE, 'phase_4/dna/storage.pdna')
-    loader.loadDNAFile(DNASTORE, 'phase_4/dna/storage.pdna')
+    loader.loadDNAFile(DNASTORE, 'dna/storage.pdna')
     loader.loadDNAFile(DNASTORE, 'phase_5/dna/storage_town.pdna')
     # loadDNAFile(DNASTORE, 'phase_5.5/dna/storage_estate.pdna')
     # loadDNAFile(DNASTORE, 'phase_5.5/dna/storage_house_interior.pdna')

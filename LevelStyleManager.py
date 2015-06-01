@@ -14,29 +14,29 @@ class dnaPieces():
 
     def __init__(self):
         
-        #import DNAUtil
-        #import DNAError
-        #import DNAAnimBuilding
-        #import DNAAnimProp
+        #import dna.DNAUtil
+        #import dna.DNAError
+        #import dna.DNAAnimBuilding
+        #import dna.DNAAnimProp
             
-        from DNACornice import DNACornice
-        from DNADoor import DNADoor
-        from DNAFlatBuilding import DNAFlatBuilding
-        from DNAFlatDoor import DNAFlatDoor
-        from DNAGroup import DNAGroup
-        from DNAInteractiveProp import DNAInteractiveProp
-        from DNALandmarkBuilding import DNALandmarkBuilding
-        from DNANode import DNANode
-        from DNAProp import DNAProp
-        from DNASign import DNASign
-        from DNASignBaseline import DNASignBaseline
-        from DNASignGraphic import DNASignGraphic
-        from DNASignText import DNASignText
-        from DNAStreet import DNAStreet
-        from DNAVisGroup import DNAVisGroup
-        from DNAWall import DNAWall
-        from DNAWindows import DNAWindows
-        from DNAStorage import DNAStorage
+        from dna.DNACornice import DNACornice
+        from dna.DNADoor import DNADoor
+        from dna.DNAFlatBuilding import DNAFlatBuilding
+        from dna.DNAFlatDoor import DNAFlatDoor
+        from dna.DNAGroup import DNAGroup
+        from dna.DNAInteractiveProp import DNAInteractiveProp
+        from dna.DNALandmarkBuilding import DNALandmarkBuilding
+        from dna.DNANode import DNANode
+        from dna.DNAProp import DNAProp
+        from dna.DNASign import DNASign
+        from dna.DNASignBaseline import DNASignBaseline
+        from dna.DNASignGraphic import DNASignGraphic
+        from dna.DNASignText import DNASignText
+        from dna.DNAStreet import DNAStreet
+        from dna.DNAVisGroup import DNAVisGroup
+        from dna.DNAWall import DNAWall
+        from dna.DNAWindows import DNAWindows
+        from dna.DNAStorage import DNAStorage
         
         
         global DNASTORE

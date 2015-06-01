@@ -1,7 +1,7 @@
 from pandac.PandaModules import *
 from direct.directnotify.DirectNotifyGlobal import *
 from direct.showbase import Loader
-from DNAParser import *
+from dna.DNAParser import *
 
 class ToontownLoader(Loader.Loader):
     TickPeriod = 0.2
